@@ -8,44 +8,61 @@
     : `https://paypal.me/${account}`;
 </script>
 
-<div>
-  <h1>Hofrave</h1>
+<div />
 
-  <p>
-    {#if amount}
-      <big>{amount}€</big>
-    {:else}
-      <big>...€</big>
-    {/if}
-  </p>
+<h1>Hofrave</h1>
 
-  <section>
-    {#each [2, 3, 5, 10] as donation}
-      <button
-        class:selected={donation === amount}
-        on:click={() => (amount = donation)}>{donation}€</button
-      >
-    {/each}
+<p>
+  {#if amount}
+    <big>{amount}€</big>
+  {:else}
+    <big>...€</big>
+  {/if}
+</p>
+
+<section>
+  {#each [2, 3, 5, 10] as donation}
     <button
-      use:confettiAction
-      class:selected={25 === amount}
-      on:click={() => (amount = 25)}>25€</button
+      class:selected={donation === amount}
+      on:click={() => (amount = donation)}>{donation}€</button
     >
-  </section>
+  {/each}
+  <button
+    use:confettiAction
+    class:selected={25 === amount}
+    on:click={() => (amount = 25)}>25€</button
+  >
+</section>
 
-  <a {href} target="_blank" class:shine={!!amount}>Spenden</a>
+<a {href} target="_blank" class:shine={!!amount}>Spenden</a>
 
-  <small>über Paypal</small>
-</div>
+<small>über Paypal</small>
 
 <style>
   :global(body) {
-    background-image: url("/static/hero.webp");
     width: 100vw;
     height: 100dvh;
+
+    margin: 0;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+
+  }
+
+  div {
+    position: absolute;
+    inset: 0;
+    background-image: url(/static/hero.webp);
+    background-image: image-set(
+      "/static/hero.avif" type("image/avif"),
+      "/static/hero.webp" type("image/webp")
+    );
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
     background-position: center;
     background-size: cover;
-    margin: 0;
+    z-index: -1;
   }
 
   h1 {
@@ -79,12 +96,6 @@
     gap: 10px;
   }
 
-  div {
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-  }
-
   p {
     min-height: 2em;
   }
@@ -104,6 +115,7 @@
     overflow: hidden;
     position: relative;
     font-weight: bold;
+    box-shadow: 2px 2px 4px 2px rgba(0, 0, 0, 0.289);
   }
 
   a:not(.shine) {

@@ -19,3 +19,7 @@
   font-family: myFirstFont;
   src: url(/static/font.woff);
 }
+
+#app {
+  display: contents;
+}
