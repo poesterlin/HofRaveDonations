@@ -40,11 +40,12 @@
 
 <style>
   :global(body) {
-    background-image: url("/hero.webp");
+    background-image: url("/static/hero.webp");
     width: 100vw;
     height: 100dvh;
     background-position: center;
     background-size: cover;
+    margin: 0;
   }
 
   h1 {

@@ -17,5 +17,5 @@
 
 @font-face {
   font-family: myFirstFont;
-  src: url(font.woff);
+  src: url(/static/font.woff);
 }
