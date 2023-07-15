@@ -58,8 +58,8 @@
       "/static/hero.avif" type("image/avif"),
       "/static/hero.webp" type("image/webp")
     );
-    filter: blur(8px);
-    -webkit-filter: blur(8px);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
     background-position: center;
     background-size: cover;
     z-index: -1;
